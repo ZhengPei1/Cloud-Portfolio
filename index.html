@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zheng (John) Pei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* --- LAYOUT STYLES --- (For Sidebar) */
+        .main-layout {
+            display: flex; 
+            width: 90%;
+            margin: 30px auto;
+            max-width: 1400px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+
+
+        #visitor-count-container {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #e9ecef; /* Light gray background */
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        #visitor-count {
+            color: #dc3545; /* A distinct color like red for emphasis */
+            font-size: 1.2em;
+            padding-left: 0px;
+        }
+
+        .side-nav {
+            width: 250px; 
+            min-width: 200px;
+            background-color: #343a40; 
+            color: white;
+            padding: 20px 0;
+            position: sticky; 
+            top: 0;
+            height: 100vh;
+        }
+
+        .side-nav h3 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        .side-nav a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.2s, color 0.2s;
+            border-left: 5px solid transparent;
+        }
+
+        .side-nav a:hover, .side-nav a.active {
+            background-color: #495057;
+            color: #007bff;
+            border-left: 5px solid #007bff;
+        }
+
+        .main-content {
+            flex-grow: 1; 
+            padding: 20px 40px;
+            overflow-y: auto; 
+        }
+
+        /* --- CONTENT STYLES --- */
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #007bff;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #007bff;
+            margin-bottom: 5px;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .contact-links a {
+            margin: 0 5px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .contact-links a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
+            padding-top: 50px; 
+            margin-top: -50px;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .item-header h3 {
+            margin: 0;
+            color: #007bff;
+            font-size: 1.2em;
+        }
+
+        .item-header .date {
+            font-style: italic;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* Project Item Header */
+        .project-header { 
+            display: flex;
+            
+            width: 100%;
+            align-items: center;
+            margin-bottom: 10px; 
+            color: #007bff;
+            font-size: 1.2em;
+        }
+
+        .project-header h3 {
+            margin: 0;
+        }
+
+        .github-link-text {
+            font-size: 1em; 
+            color: inherit;
+            margin-left: 30px;
+        }
+
+        .project-tech-stack { 
+            font-style: italic;
+            color: #666;
+            font-weight: normal; 
+            margin-top: 3px; 
+            margin-bottom: 8px; 
+            display: block; 
+        }
+
+        .github-link {
+        color: #333;
+        margin-right: 10px; 
+        }
+
+        .github-link:hover {
+        color: #007bff;
+        }
+
+
+        .description {
+            margin-left: 15px;
+            color: #555;
+        }
+
+        .description ul {
+            list-style-type: disc;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Project Button Styles */
+        .project-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .project-buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .project-buttons button:hover {
+            background-color: #0056b3;
+        }
+        
+        .project-buttons button.active {
+            background-color: #28a745; 
+        }
+        
+        /* Skills List*/
+        .skills-list p {
+            display: flex; 
+            margin-bottom: 8px;
+            gap: 15px; /* Spacing between the label and the skills list */
+        }
+        .skills-list strong {
+            width: 200px; 
+            min-width: 200px;
+            flex-shrink: 0; /* Ensures the label maintains its width and doesn't get squeezed */
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Certifications */
+        .cert-list a {
+            color: #007bff; 
+            text-decoration: underline; 
+        }
+        .cert-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-layout">
+        
+        <nav class="side-nav">
+            <h3>Sections</h3>
+            <ul>
+                <li><a href="#header"><i class="fa-solid fa-house"></i> Top</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+                <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education & Certs</a></li>
+                <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
+                <li><a href="#projects"><i class="fa-solid fa-lightbulb"></i> Projects</a></li>
+                <li><a href="#skills"><i class="fa-solid fa-wrench"></i> Skills</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            
+            <header id="header">
+                <h1>Zheng (John) Pei</h1>
+                <p id="contact" class="contact-links">
+                    <a href="mailto:zhengpei.pz@gmail.com"><i class="fa-solid fa-envelope"></i> zhengpei.pz@gmail.com</a> |
+                    <a href="https://www.linkedin.com/in/john-pei/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> |
+                    <a href="https://github.com/ZhengPei1" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
+                </p>
+                <div id="visitor-count-container">
+                    <span class="count-label">You are the <span id="visitor-count">...</span>th visitor of this site! <a href="mailto:zhengpei.pz@gmail.com">Say Hi!</a></span> 
+                </div>
+            </header>
+
+            <section id="education">
+                <h2>🎓 Education & Certifications</h2>
+                <article>
+                    <div class="item-header">
+                        <h3>Bachelor of Computer Science (BCS) - GPA 3.96/4.0</h3>
+                        <span class="date">Sep 2023 – Dec 2027</span>
+                    </div>
+                    <p><strong>University of Waterloo</strong> | Waterloo, ON</p>
+                </article>
+                <br>
+                <h3>Certifications</h3>
+                <ul class="cert-list">
+                    <li><a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/fcc3748149fa470eacb46507132ade70" target="_blank">Amazon AWS Certified Solutions Architect Associate (SAA-C03)</a></li>
+                    <li><a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/5faab3a44adf4c47be1eae16fe459064" target="_blank">Amazon AWS Certified Cloud Practitioner (CLF-C02)</a></li>
+                </ul>
+            </section>
+            
+            <section id="experience">
+                <h2>💼 Experience</h2>
+                <article>
+                    <div class="item-header">
+                        <h3>Backend Developer Intern (Incoming)</h3>
+                        <span class="date">Jan 2026 -- April 2026</span>
+                    </div>
+                    <p><strong>Geotab</strong></p>
+                </article>
+
+                <article>
+                    <div class="item-header">
+                        <h3>Compiler Engineer</h3>
+                        <span class="date">May 2025 -- Aug 2025</span>
+                    </div>
+                    <p><strong>Huawei</strong> | Markham, ON</p>
+                    <div class="description">
+                        <ul>
+                            <li>Automated prefetch metadata generation and mass experiment execution with <strong>Python</strong> and <strong>Bash scripts</strong>, enabling the team to complete all experiments 5 days ahead of the paper submission deadline.</li>
+                            <li>Designed a novel prefetch filtering algorithm that reduced the prefetch bandwidth usage by <strong>54.25%</strong> with only a 0.11% IPC loss. Significantly lowered power overhead and prefetch delay.</li>
+                            <li>Implemented and evaluated Huawei's new MLS-based hardware prefetching algorithm with <strong>C++</strong> on the <strong>Gem5</strong> microarchitecture simulator, using McPAT and CACTI for comprehensive power and area overhead analysis.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="item-header">
+                        <h3>QA Test Engineer</h3>
+                        <span class="date">Sep 2024 -- Dec 2024</span>
+                    </div>
+                    <p><strong>Plooto</strong> | Toronto, ON</p>
+                    <div class="description">
+                        <ul>
+                            <li>Automated test data generation using <strong>Python</strong> scripts and leveraged <strong>SQL</strong> to ensure data accuracy. Designed and executed end-to-end manual test cases, contributing to a <strong>4% expansion in test coverage</strong>.</li>
+                            <li>Optimized complex <strong>SQL queries</strong>, boosting data retrieval speed by <strong>15%</strong>. Created SQL Server views to streamline data access.</li>
+                            <li>Conducted load and throttling tests to assess system performance under stress.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="item-header">
+                        <h3>Backend Developer (Volunteer)</h3>
+                        <span class="date">Sep 2022 -- Feb 2023</span>
+                    </div>
+                    <p><strong>Beaver With U</strong> | Remote</p>
+                    <div class="description">
+                        <ul>
+                            <li>Maintained <strong>RESTful APIs</strong> to support user onboarding and developed <strong>Pandas-based</strong> data processing pipelines.</li>
+                            <li>Troubleshot backend issues related to API failures and data inconsistencies across staging and production environments.</li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+            
+            <section id="projects">
+                <h2>💡 Projects</h2>
+                
+                <div class="project-buttons">
+                    <button onclick="loadProjects('cloud-projects.html', this)">☁️ Cloud / DevOps</button>
+                    <button onclick="loadProjects('fullstack-projects.html', this)">💻 Fullstack / Web</button>
+                    <button onclick="loadProjects('standalone-projects.html', this)">🚀 Standalone</button>
+                </div>
+                <div id="project-content">
+                    <p>Click a button above to view relevant project examples.</p>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>🔧 Skills</h2>
+                <div class="skills-list">
+                    <p><strong>Programming Languages:</strong> Python, C, C++, Javascript, Java, HTML/CSS, Bash Script, R</p>
+                    <p><strong>Technologies/Frameworks:</strong> SQL, React.js, Node.js, Express, Flask, Apache Airflow</p>
+                    <p><strong>Developer Tools:</strong> AWS, GCP (Firebase), Gitlab, Github Actions (CI/CD), Docker, Linux</p>
+                    <p><strong>Computer Architecture & Simulation:</strong> Gem5, McPAT, CACTI</p>
+                    <p><strong>Network:</strong> TCP/IP, UDP, SSL/TLS, Firewall, DNS</p>
+                    <p><strong>CourseWork:</strong> Object-Oriented Programming (CS246), Data Structures & Mangement (CS240), Compiler (CS241), Operating System (CS350), Algorithms (CS341)</p>
+                </div>
+            </section>
+            
+        </div>
+    </div> 
+
+    <script src="./config.js"></script>
+    <script>
+        // JavaScript to load external HTML content dynamically
+        function loadProjects(fileName, buttonElement) {
+            fetch(fileName)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('project-content').innerHTML = html;
+                    const buttons = document.querySelectorAll('.project-buttons button');
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    buttonElement.classList.add('active');
+                })
+                .catch(error => {
+                    document.getElementById('project-content').innerHTML = 
+                        `<p style="color: red;">Error loading projects: ${error.message}. Make sure '${fileName}' exists.</p>`;
+                    console.error('Fetch error:', error);
+                });
+        }
+
+        function loadVisitorCount(API){
+            fetch(API)
+                .then(response =>{
+                    if (!response.ok) {
+                        throw new Error(`HTTP error from visitor count endpoint! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(json => {
+                    console.log(json)
+                    document.getElementById('visitor-count').innerHTML = json["visitor_count"];
+                }).catch(error => {
+                    document.getElementById('visitor-count').innerHTML = 
+                        `<p style="color: red;">Error loading visitor counts: ${error.message}.</p>`;
+                    console.error('Fetch error:', error);
+                });
+        }
+        
+        // Load the default project list when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultButton = document.querySelector('.project-buttons button');
+            if (defaultButton) {
+                // Ensure the project file you want to load by default is listed here
+                loadProjects('cloud-projects.html', defaultButton);
+            }
+            //loadVisitorCount(API_ENDPOINT);
+        });
+    </script>
+</body>
+</html>
