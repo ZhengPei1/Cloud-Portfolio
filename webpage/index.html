@@ -292,14 +292,28 @@
             <header id="header">
                 <h1>Zheng (John) Pei</h1>
                 <p id="contact" class="contact-links">
-                    <a href="mailto:zhengpei.pz@gmail.com"><i class="fa-solid fa-envelope"></i> zhengpei.pz@gmail.com</a> |
                     <a href="https://www.linkedin.com/in/john-pei/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> |
                     <a href="https://github.com/ZhengPei1" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
                 </p>
                 <div id="visitor-count-container">
-                    <span class="count-label">You are the <span id="visitor-count">...</span>th visitor of this site! <a href="mailto:zhengpei.pz@gmail.com">Say Hi!</a></span> 
+                    
+                    <span class="count-label">You are the <span id="visitor-count">...</span>th visitor of this site! 
+                        <script>
+                            document.write('<a href="mail' + 'to:zhe' + 'ngpe' + 'i.pz" + "@" + "gm" + "ail.c" + "om">Say Hi!</a>');
+                        </script>
+                    </span> 
                 </div>
             </header>
+
+            <section id="about-this-site">
+                <h2>🌐 About This Website</h2>
+                <p>
+                    This website is my cloud resume, built to showcase my skills in cloud computing and DevOps. The infrastructure is fully provisioned on AWS using Terraform.
+                </p>
+                <p>
+                    View the source code/deploy it for yourself: <a href="https://github.com/ZhengPei1/Cloud-Portfolio" target="_blank">CloudPortfolio</a>.
+                </p>
+            </section>
 
             <section id="education">
                 <h2>🎓 Education & Certifications</h2>
@@ -391,7 +405,7 @@
                 <div class="skills-list">
                     <p><strong>Programming Languages:</strong> Python, C, C++, Javascript, Java, HTML/CSS, Bash Script, R</p>
                     <p><strong>Technologies/Frameworks:</strong> SQL, React.js, Node.js, Express, Flask, Apache Airflow</p>
-                    <p><strong>Developer Tools:</strong> AWS, GCP (Firebase), Gitlab, Github Actions (CI/CD), Docker, Linux</p>
+                    <p><strong>Developer Tools:</strong> AWS, GCP (Firebase), Terraform(IaC), Github Actions (CI/CD), Docker, Linux</p>
                     <p><strong>Computer Architecture & Simulation:</strong> Gem5, McPAT, CACTI</p>
                     <p><strong>Network:</strong> TCP/IP, UDP, SSL/TLS, Firewall, DNS</p>
                     <p><strong>CourseWork:</strong> Object-Oriented Programming (CS246), Data Structures & Mangement (CS240), Compiler (CS241), Operating System (CS350), Algorithms (CS341)</p>
@@ -434,7 +448,6 @@
                     return response.json();
                 })
                 .then(json => {
-                    console.log(json)
                     document.getElementById('visitor-count').innerHTML = json["visitor_count"];
                 }).catch(error => {
                     document.getElementById('visitor-count').innerHTML = 
@@ -450,7 +463,7 @@
                 // Ensure the project file you want to load by default is listed here
                 loadProjects('cloud-projects.html', defaultButton);
             }
-            //loadVisitorCount(API_ENDPOINT);
+            loadVisitorCount(API_ENDPOINT);
         });
     </script>
 </body>

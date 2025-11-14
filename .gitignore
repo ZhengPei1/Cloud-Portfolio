@@ -1,1 +1,14 @@
 config.js
+
+# Terraform Files
+*.tfstate
+*.tfstate.*
+imports.tf
+.terraform*
+*.tfplan
+crash.log
+*.tfvars*
+
+# IDE / Editor directories
+.vscode/
+.idea/
