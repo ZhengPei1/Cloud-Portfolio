@@ -299,7 +299,7 @@
                     
                     <span class="count-label">You are the <span id="visitor-count">...</span>th visitor of this site! 
                         <script>
-                            document.write('<a href="mail' + 'to:zhe' + 'ngpe' + 'i.pz" + "@" + "gm" + "ail.c" + "om">Say Hi!</a>');
+                            document.write('<a href="mail' + 'to:zhe' + 'ngpe' + 'i.pz' + '@' + 'gm' + 'ail.c' + 'om">Say Hi!</a>');
                         </script>
                     </span> 
                 </div>
@@ -308,10 +308,7 @@
             <section id="about-this-site">
                 <h2>🌐 About This Website</h2>
                 <p>
-                    This website is my cloud resume, built to showcase my skills in cloud computing and DevOps. The infrastructure is fully provisioned on AWS using Terraform.
-                </p>
-                <p>
-                    View the source code/deploy it for yourself: <a href="https://github.com/ZhengPei1/Cloud-Portfolio" target="_blank">CloudPortfolio</a>.
+                    The infrastructure is fully provisioned on AWS using Terraform. View the source code/deploy it for yourself: <a href="https://github.com/ZhengPei1/Cloud-Portfolio" target="_blank">CloudPortfolio</a>.
                 </p>
             </section>
 
@@ -404,7 +401,7 @@
                 <h2>🔧 Skills</h2>
                 <div class="skills-list">
                     <p><strong>Programming Languages:</strong> Python, C, C++, Javascript, Java, HTML/CSS, Bash Script, R</p>
-                    <p><strong>Technologies/Frameworks:</strong> SQL, React.js, Node.js, Express, Flask, Apache Airflow</p>
+                    <p><strong>Technologies/Frameworks:</strong> SQL, React.js, Node.js, Express, Flask</p>
                     <p><strong>Developer Tools:</strong> AWS, GCP (Firebase), Terraform(IaC), Github Actions (CI/CD), Docker, Linux</p>
                     <p><strong>Computer Architecture & Simulation:</strong> Gem5, McPAT, CACTI</p>
                     <p><strong>Network:</strong> TCP/IP, UDP, SSL/TLS, Firewall, DNS</p>
@@ -460,7 +457,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const defaultButton = document.querySelector('.project-buttons button');
             if (defaultButton) {
-                // Ensure the project file you want to load by default is listed here
                 loadProjects('cloud-projects.html', defaultButton);
             }
             loadVisitorCount(API_ENDPOINT);
