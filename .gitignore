@@ -5,6 +5,7 @@ config.js
 *.tfstate.*
 imports.tf
 .terraform*
+*.zip
 *.tfplan
 crash.log
 *.tfvars*
